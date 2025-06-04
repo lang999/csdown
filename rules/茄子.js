@@ -1,139 +1,127 @@
 const csdown = {
     d: [],
     author: '流苏',
-    version: '20250520_1',
+    version: '20250401',
     rely: (data) => {
         return data.match(/\{([\s\S]*)\}/)[0].replace(/\{([\s\S]*)\}/, '$1')
     },
     home: () => {
         var d = csdown.d;
-        if (!csdown.𝐜𝐨𝐝𝐞_) {
-            csdown.𝐜𝐨𝐝𝐞_1();
-        } else {
-            if (getItem('up' + csdown.version, '') == '') {
-                confirm({
-                    title: '更新内容',
-                    content: '版本号：' + csdown.version + '\n1.修复一些bug\n2.增加一些bug\n3.增加长按更新茄子服务器数据\n4.增加长按更换线路(没事别换)\n5.搜索界面增加搜索框\n6.增加av百科\n7.首页增加部分模块\n8.综合部分二级页面修改\n9.看不了的是服务器问题，与我无关\n10.修复瓜太郎二级页面空白问题\n11.临时修复部分模块，更新后自行重生或更换线路9\n12.茄子服务器已修复，自行更换为线路1\n13.修改漫画二级页面\n14.修复猫咪系列模块无法打开的问题\n15.百科增加模块，自行长按更新数据\n16.修复蘑菇视频播放(最好挂代理)\n17.修复搜索中部分模块图片不显示的问题\n18.修复图标及部分线路\n19.替换可用线路\n20.待续',
-                    confirm: $.toString((version) => {
-                        setItem('up' + version, '1')
-                    }, csdown.version),
-                    cancel: $.toString(() => {})
-                })
-            }
-            if (MY_PAGE == 1) {
-                d.push({   
-                    title: "搜索 ",
-                    url: $.toString(() => {
-                        putMyVar('keyword', input)
-                        return "hiker://empty?page=fypage&kw=" + input + '@rule=js:$.require("csdown").search()'
-                    }),
-                       desc: "请输入搜索关键词",
-                       col_type: "input",
-                    extra: {
-                        defaultValue: getMyVar('keyword', ''),
-                    }
-                })
-            };
-            var list = [{
-                title: '首页&综合',
-                id: '1&2&3&4&5',
-                img: 'https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/127.svg&https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/137.svg&https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/113.svg&https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/114.svg&https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/122.svg'
-            }];
-            if (MY_PAGE == 1) {
-                function strong(d, c) {
-                    return '‘‘’’<strong><font color=#' + (c || '000000') + '>' + d + '</font></strong>';
+        if (getItem('up' + csdown.version, '') == '') {
+            confirm({
+                title: '更新内容',
+                content: '版本号：' + csdown.version + '\n1.修复一些bug\n2.增加一些bug\n3.增加长按更新茄子服务器数据\n4.增加长按更换线路(没事别换)\n5.搜索界面增加搜索框\n6.增加av百科\n7.首页增加部分模块\n8.综合部分二级页面修改\n9.看不了的是服务器问题，与我无关\n10.修复瓜太郎二级页面空白问题\n11.待续',
+                confirm: $.toString((version) => {
+                    setItem('up' + version, '1')
+                }, csdown.version),
+                cancel: $.toString(() => {})
+            })
+        }
+        if (MY_PAGE == 1) {
+            d.push({   
+                title: "搜索 ",
+                url: $.toString(() => {
+                    putMyVar('keyword', input)
+                    return "hiker://empty?page=fypage&kw=" + input + '@rule=js:$.require("csdown").search()'
+                }),
+                   desc: "请输入搜索关键词",
+                   col_type: "input",
+                extra: {
+                    defaultValue: getMyVar('keyword', ''),
                 }
-                var index_n = list[0].id.split('&')[0];
-                list.forEach(data => {
-                    var title = data.title.split('&');
-                    var id = data.id.split('&');
-                    var img = data.img.split('&');
-                    title.forEach((title, index) => {
-                        d.push({
-                            title: (getMyVar('首页', index_n) == id[index] ? strong(title, 'FF6699') : title),
-                            img: img[index],
-                            url: $('#noLoading#').lazyRule((title, id) => {
-                                putMyVar('首页', id);
-                                refreshPage(false);
-                                return 'hiker://empty';
-                            }, title, id[index]),
-                            col_type: 'icon_2_round',
-                            extra: {
-                                longClick: [{
-                                    title: '更新数据',
-                                    js: $.toString(() => {
-                                        eval($.require('csdown').rely($.require('csdown').aes));
-                                        let shouye = qzDecrypt(request('http://c001.22s.lol/encrypt/api.php?path=qiezi/shouye'));
-                                        let data = qzDecrypt(request('http://c001.22s.lol/encrypt/api.php?path=qiezi/zonghe'));
-                                        let search = fetch('http://c001.22s.lol/searchconfig/vipapi/vipconfig.txt');
-                                        // var kuozhan=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/heikeji'));
-                                        // var yuming=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/yuming'));
-                                        //  var gonggao=qzDecrypt(http://y001.22s.mom/encrypt/api.php?path=qiezi/qz'));
-                                        let avbk = fetch('https://app.caoppht.com/avbk132.php');
-                                        //茄子数据
-                                        //http://api.xka1.top/qiezi/shouye.txt
-                                        //http://api.xka1.top/qiezi/zonghe.txt
-                                        //小可爱数据
-                                        //http://api.xka1.top/xiaokeai/shouye.txt
-                                        //http://api.xka1.top/xiaokeai/zonghe.txt
-                                        setItem('shouye', shouye);
-                                        setItem('data', data);
-                                        setItem('search', search);
-                                        setItem('avbk', avbk);
-                                        // setItem('yuming',yuming);
-                                        //setItem('kuozhan',kuozhan);
-                                        // setItem('gonggao',gonggao);
-                                        refreshPage(false);
-                                        toast('数据已更新');
-                                        log('数据已更新');
-                                        return 'hiker://empty';
-                                    })
-                                }, {
-                                    title: '更换线路',
-                                    js: $.toString(() => {
-                                        var url = 'http://randomapi02.changfapiaopiao.top|http://randomapi01.changfapiaopiao.top|http://api018.apijiekou.top/api|http://api018.phpjiekou.top|http://api.22s.lol/api|http://api.changfapiaopiao.top|http://api1.apijiekou.top/api|http://api.phpjiekou.top'.split('|');
-                                        var option = '线路1&线路2&线路3&线路4&线路5&线路6&线路7&线路8'.split('&')
-                                        var Line = {
-                                            title: '切换线路',
-                                            options: option,
-                                            col: 2,
-                                            js: $.toString((url) => {
-                                                var index = input.match(/\d+/)[0];
-                                                var host = url[index - 1];
-                                                setItem('host', host);
-                                                refreshPage(false);
-                                                toast('线路已更换');
-                                            }, url)
-                                        }
-                                        return 'select://' + JSON.stringify(Line);
-                                    })
-                                }]
-                            }
-                        })
-                    })
+            })
+        };
+        var list = [{
+            title: '首页&综合',
+            id: '1&2&3&4&5',
+            img: 'https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/127.svg&https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/137.svg&https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/113.svg&https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/114.svg&https://ghproxy.net/https://raw.githubusercontent.com/ls125781003/tubiao/main/movie/122.svg'
+        }];
+        if (MY_PAGE == 1) {
+            function strong(d, c) {
+                return '‘‘’’<strong><font color=#' + (c || '000000') + '>' + d + '</font></strong>';
+            }
+            var index_n = list[0].id.split('&')[0];
+            list.forEach(data => {
+                var title = data.title.split('&');
+                var id = data.id.split('&');
+                var img = data.img.split('&');
+                title.forEach((title, index) => {
                     d.push({
-                        col_type: 'blank_block',
-                    });
+                        title: (getMyVar('首页', index_n) == id[index] ? strong(title, 'FF6699') : title),
+                        img: img[index],
+                        url: $('#noLoading#').lazyRule((title, id) => {
+                            putMyVar('首页', id);
+                            refreshPage(false);
+                            return 'hiker://empty';
+                        }, title, id[index]),
+                        col_type: 'icon_2_round',
+                        extra: {
+                            longClick: [{
+                                title: '更新数据',
+                                js: $.toString(() => {
+                                    eval($.require('csdown').rely($.require('csdown').aes));
+                                    let shouye = qzDecrypt(request('http://003.22s.lol/encrypt/api.php?path=qiezi/shouye'));
+                                    let data = qzDecrypt(request('http://003.22s.lol/encrypt/api.php?path=qiezi/zonghe'));
+                                    let search = fetch('http://003.22s.lol/searchconfig/vipapi/vipconfig.txt');
+                                    // var kuozhan=qzDecrypt(request('http://004.22s.lol/encrypt/api.php?path=qiezi/heikeji'));
+                                    // var yuming=qzDecrypt(request('http://01.xka3a.top/encrypt/api.php?path=yuming/yuming'));
+                                    //  var gonggao=qzDecrypt(request('http://003.22s.lol/encrypt/api.php?path=qiezi/qz'));
+                                    let avbk = fetch('https://app.caoppht.com/avbk132.php');
+                                    //茄子数据
+                                    //http://api.xka1.top/qiezi/shouye.txt
+                                    //http://api.xka1.top/qiezi/zonghe.txt
+                                    //小可爱数据
+                                    //http://api.xka1.top/xiaokeai/shouye.txt
+                                    //http://api.xka1.top/xiaokeai/zonghe.txt
+                                    setItem('shouye', shouye);
+                                    setItem('data', data);
+                                    setItem('search', search);
+                                    setItem('avbk', avbk);
+                                    // setItem('yuming',yuming);
+                                    //setItem('kuozhan',kuozhan);
+                                    // setItem('gonggao',gonggao);
+                                    refreshPage(false);
+                                    toast('数据已更新');
+                                    log('数据已更新');
+                                    return 'hiker://empty';
+                                })
+                            }, {
+                                title: '更换线路',
+                                js: $.toString(() => {
+                                    var url = 'https://api1.yilushunfeng.top|https://api.changfapiaopiao.top|http://api1.yilushunfeng.top|http://api.changfapiaopiao.top|http://api1.apijiekou.top/api|http://api.phpjiekou.top|http://004.22s.lol/api'.split('|');
+                                    var option = '线路1(推荐)&线路2&线路3&线路4&线路5&线路6&线路7'.split('&')
+                                    var Line = {
+                                        title: '切换线路',
+                                        options: option,
+                                        col: 2,
+                                        js: $.toString((url) => {
+                                            var index = input.match(/\d+/)[0];
+                                            var host = url[index - 1];
+                                            setItem('host', host);
+                                            refreshPage(false);
+                                            toast('线路已更换');
+                                        }, url)
+                                    }
+                                    return 'select://' + JSON.stringify(Line);
+                                })
+                            }]
+                        }
+                    })
                 })
                 d.push({
-                    col_type: 'big_blank_block',
+                    col_type: 'blank_block',
                 });
-            }
-            //setPreResult(d)
-            var 分类 = getMyVar('首页', '1');
-            if (MY_RULE.author == csdown.author || MY_NAME == '嗅觉浏览器') {
-                if (分类 == 1) {
-                    csdown.video()
-                } else if (分类 == 2) {
-                    csdown.zonghe()
-                }
-            } else {
-                d.push({
-                    title: '请勿修改作者名称',
-                    url: 'hiker://empty',
-                    col_type: 'text_center_1',
-                })
-            }
+            })
+            d.push({
+                col_type: 'big_blank_block',
+            });
+        }
+        //setPreResult(d)
+        var 分类 = getMyVar('首页', '1');
+        if (分类 == 1) {
+            csdown.video()
+        } else if (分类 == 2) {
+            csdown.zonghe()
         }
         setResult(d)
     },
@@ -158,7 +146,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").madou()',
                         col_type: 'icon_4_card'
                     })
@@ -166,7 +154,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").tv_91()',
                         col_type: 'icon_4_card'
                     })
@@ -174,7 +162,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").maomi()',
                         col_type: 'icon_4_card'
                     })
@@ -182,7 +170,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").maomiyuanchuang()',
                         col_type: 'icon_4_card'
                     })
@@ -190,7 +178,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                         col_type: 'icon_4_card',
                         extra: {
@@ -202,7 +190,7 @@ const csdown = {
             })
             d.push({
                     title: '撸先生',
-                    img: 'http://c001.22s.lol/6img/lusir.png',
+                    img: 'http://api.xka1.top/6img/lusir.png',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -211,7 +199,7 @@ const csdown = {
                     }
                 }, {
                     title: '猫咪视频',
-                    img: 'http://c001.22s.lol/6img/maomisq.png',
+                    img: 'http://api.xka1.top/6img/maomisq.png',
                     url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").maomiav()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -220,7 +208,7 @@ const csdown = {
                     }
                 }, {
                     title: 'JAV日本区',
-                    img: 'http://c001.22s.lol/6img/javn.png',
+                    img: 'http://api.xka1.top/6img/javn.png',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -231,7 +219,7 @@ const csdown = {
                 /*
                  {
                     title: '秘爱',
-                    img: 'http://c001.22s.lol/6img/miai.jpg',
+                    img: 'http://api.xka1.top/6img/miai.jpg',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -242,7 +230,7 @@ const csdown = {
                 */
                 {
                     title: 'UAA视频',
-                    img: 'http://c001.22s.lol/6img/uaa.png',
+                    img: 'http://api.xka1.top/6img/uaa.png',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -253,7 +241,7 @@ const csdown = {
                 /*
                 {
                     title: 'UU视频',
-                    img: 'http://c001.22s.lol/6img/uusp.png',
+                    img: 'http://api.xka1.top/6img/uusp.png',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -264,7 +252,7 @@ const csdown = {
                 */
                 {
                     title: '图宅',
-                    img: 'http://c001.22s.lol/6img/tuzac.png',
+                    img: 'http://api.xka1.top/6img/tuzac.png',
                     url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").picerji()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -275,7 +263,7 @@ const csdown = {
                 /*
                  {
                     title: '嘿嘿连载',
-                    img: 'http://c001.22s.lol/6img/heiheilz.png',
+                    img: 'http://api.xka1.top/6img/heiheilz.png',
                     url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").manhuaerji()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -284,7 +272,7 @@ const csdown = {
                     }
                 }, {
                     title: '禁漫天堂[新]',
-                    img: 'http://c001.22s.lol/6img/jinmantt.png',
+                    img: 'http://api.xka1.top/6img/jinmantt.png',
                     url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").manhuaerji()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -295,7 +283,7 @@ const csdown = {
                 */
                 {
                     title: '暗网[每日大赛]',
-                    img: 'http://c001.22s.lol/6img/meiridasai.png',
+                    img: 'http://api.xka1.top/6img/meiridasai.png',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").videoerji()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -304,7 +292,7 @@ const csdown = {
                     }
                 }, {
                     title: '帖子[每日大赛]',
-                    img: 'http://c001.22s.lol/6img/meiridasai.png',
+                    img: 'http://api.xka1.top/6img/meiridasai.png',
                     url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").blackerji()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -313,7 +301,7 @@ const csdown = {
                     }
                 }, {
                     title: '博天堂',
-                    img: 'http://c001.22s.lol/6img/f4.png',
+                    img: 'http://api.xka1.top/6img/f4.png',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                     col_type: 'icon_4_card',
                     extra: {
@@ -324,7 +312,7 @@ const csdown = {
                 /*
                     {
                         title: '小狐狸',
-                        img: 'http://c001.22s.lol/6img/xiaohuli1.png',
+                        img: 'http://api.xka1.top/6img/xiaohuli1.png',
                         url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                         col_type: 'icon_4_card',
                         extra: {
@@ -349,7 +337,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                             col_type: 'icon_4_card',
                             extra: {
@@ -379,13 +367,13 @@ const csdown = {
         } catch (e) {
             log(e.message)
             if (getMyVar('a') == '') {
-                const host = 'http://randomapi02.changfapiaopiao.top';
-                const shouye = qzDecrypt(request('http://007.22s.lol/encrypt/api.php?path=qiezi/shouye'))
-                const data = qzDecrypt(request('http://007.22s.lol/encrypt/api.php?path=qiezi/zonghe'))
-                const search = fetch('http://007.22s.lol/searchconfig/vipapi/vipconfig.txt')
-                // var kuozhan=qzDecrypt(request('http://007.22s.lol/encrypt/api.php?path=qiezi/heikeji'))
-                // var yuming=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/yuming'))
-                //  var gonggao=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/qz'))
+                const host = 'https://api1.yilushunfeng.top';
+                const shouye = qzDecrypt(request('http://003.22s.lol/encrypt/api.php?path=qiezi/shouye'))
+                const data = qzDecrypt(request('http://003.22s.lol/encrypt/api.php?path=qiezi/zonghe'))
+                const search = fetch('http://003.22s.lol/searchconfig/vipapi/vipconfig.txt')
+                // var kuozhan=qzDecrypt(request('http://004.22s.lol/encrypt/api.php?path=qiezi/heikeji'))
+                // var yuming=qzDecrypt(request('http://01.xka3a.top/encrypt/api.php?path=yuming/yuming'))
+                //  var gonggao=qzDecrypt(request('http://003.22s.lol/encrypt/api.php?path=qiezi/qz'))
                 const avbk = fetch('https://app.caoppht.com/avbk132.php');
                 putMyVar('a', '1');
                 setItem('host', host);
@@ -400,9 +388,9 @@ const csdown = {
                 toast('数据已更新');
                 log('数据已更新');
                 /*  
-    域名替换匹配表达式https?://(api1?\.)?(changfapiaopiao|yilushunfeng|phpjiekou|apijiekou)\.top(/api)?《 
-线路集合http://rfEXkbyp.yilushunfeng.top|http://rfEXkbyp.changfapiaopiao.top|http://api1.apijiekou.top/api|http://api.phpjiekou.top|http://api.22s.lol/api《 
-失效域名集合https://api.yilushunfeng.top|http://api.yilushunfeng.top|http://api11.phpjiekou.top《 
+    域名替换匹配表达式https?://(api1?\.)?(changfapiaopiao|yilushunfeng|phpjiekou|apijiekou)\.top(\/api)?《
+线路集合https://api1.yilushunfeng.top|https://api.changfapiaopiao.top|http://api1.yilushunfeng.top|http://api.changfapiaopiao.top|http://api1.apijiekou.top/api|http://api.phpjiekou.top|http://004.22s.lol/api《
+失效域名集合https://api.yilushunfeng.top|http://api.yilushunfeng.top|http://api11.phpjiekou.top《
 最新接口域名https://api1.yilushunfeng.top《
 */
             }
@@ -427,7 +415,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").videoerji()',
                             col_type: 'icon_4_card',
                             extra: {
@@ -439,7 +427,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").videoerji()',
                             col_type: 'icon_4_card',
                             extra: {
@@ -452,7 +440,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").blackerji()',
                         col_type: 'icon_4_card',
                         extra: {
@@ -464,7 +452,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?@rule=js:$.require("csdown").zhiboerji()',
                         col_type: 'icon_4_card',
                         extra: {
@@ -477,7 +465,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
                             col_type: 'icon_4_card',
                             extra: {
@@ -490,7 +478,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").nvyouerji()',
                         col_type: 'icon_4_card',
                         extra: {
@@ -502,7 +490,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").tieerji()',
                         col_type: 'icon_4_card',
                         extra: {
@@ -514,7 +502,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty@rule=js:$.require("csdown").zhibojuheerji()',
                         col_type: 'icon_4_card',
                         extra: {
@@ -526,7 +514,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").maomimanhua()',
                             col_type: 'icon_4_card'
                         })
@@ -534,7 +522,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").manhuaerji()',
                             col_type: 'icon_4_card',
                             extra: {
@@ -547,7 +535,7 @@ const csdown = {
                     d.push({
                         title: mc,
                         desc: qb,
-                        img: 'http://c001.22s.lol' + tp,
+                        img: 'http://api.xka1.top' + tp,
                         url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").xiaoshuoerji()',
                         col_type: 'icon_4_card',
                         extra: {
@@ -560,7 +548,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").maomimeitu()',
                             col_type: 'icon_4_card'
                         })
@@ -568,7 +556,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").picerji()',
                             col_type: 'icon_4_card',
                             extra: {
@@ -582,7 +570,7 @@ const csdown = {
                         d.push({
                             title: mc,
                             desc: qb,
-                            img: 'http://c001.22s.lol' + tp,
+                            img: 'http://api.xka1.top' + tp,
                             url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").maomiFM()',
                             col_type: 'icon_4_card'
                         })
@@ -673,7 +661,7 @@ const csdown = {
                 var Brr = ['lutube'];
                 var Crr = ['ins'];
                 var Drr = ['souavsp'];
-                var platform = host.match(/top\/.*\.php/)[0].split('/')[2];
+                var platform = host.match(/top\/.*\.php/)[0].split('.php')[0].split('/')[2];
                 //log(platform)
                 var item = JSON.parse(fetch(search_url)).videos;
                 item.forEach(data => {
@@ -761,7 +749,7 @@ const csdown = {
                     }
                 })
             } else if (getMyVar('搜索分类名', '视频') == '全网破解') {
-                var Arr = ['ttt', 'loanword', 'loanword_2', '91short', 'sepone', 'lusir', 'cape', 'degree', 'burma', 'novelty', 'intimate', 'park'];
+                var Arr = ['ttt', 'loanword', 'loanword_2', '91short', 'sepone', 'lusir', 'cape', 'degree', 'burma', 'novelty', 'intimate', 'confidential', 'park'];
                 var platform = host.match(/top\/.*\.php/)[0].split('.php')[0].split('/')[4];
                 var item = JSON.parse(fetch(search_url)).videos;
                 // log(item)
@@ -1118,7 +1106,7 @@ const csdown = {
         var maomimanhuajx = $('').lazyRule(() => {
             eval($.require('csdown').rely($.require('csdown').aes));
             var sign = Encrypt('{"user_id":1790368,"list_id":' + input + '}');
-            var host = 'http://43.154.96.251:8089/api/comic/watch?params=' + sign;
+            var host = 'http://119.28.52.193:8089/api/comic/watch?params=' + sign;
             var body = 'params=' + sign;
             var html = fetch(host, {
                 headers: {
@@ -1140,7 +1128,7 @@ const csdown = {
         var maomifmjx = $('').lazyRule(() => {
             eval($.require('csdown').rely($.require('csdown').aes));
             var sign = Encrypt('{"id":' + input + '}');
-            var host = 'http://43.154.96.251:8089/api/book/detail?params=' + sign;
+            var host = 'http://119.28.52.193:8089/api/book/detail?params=' + sign;
             var body = 'params=' + sign;
             var html = fetch(host, {
                 headers: {
@@ -1157,7 +1145,7 @@ const csdown = {
         var maomijx = $('').lazyRule(() => {
             eval($.require('csdown').rely($.require('csdown').aes));
             var sign = Encrypt('{"id":' + input + '}');
-            var host = 'http://43.154.96.251:8089/api/video/detail?params=' + sign;
+            var host = 'http://119.28.52.193:8089/api/video/detail?params=' + sign;
             var body = 'params=' + sign;
             var html = fetch(host, {
                 headers: {
@@ -1303,14 +1291,6 @@ const csdown = {
             if (ts == 1) return Y + M + D + h + m + s;
         }
 
-        //骏马图片解密，反base64
-        var junmaimage = $('').image(() => {
-            const CryptoUtil = $.require("hiker://assets/crypto-java.js");
-            let textData = CryptoUtil.Data.parseInputStream(input);
-            let base64Text = textData.toString().split('').reverse().join('');
-            let encrypted0 = CryptoUtil.Data.parseBase64(base64Text, _base64.NO_WRAP);
-            return encrypted0.toInputStream();
-        })
 
         function pageAdd(page) {
             if (getMyVar("page")) {
@@ -1363,7 +1343,7 @@ const csdown = {
         } //长按跳页
     }),
     syvideo: () => {
-        var d = csdown.d;
+        js: var d = csdown.d;
         eval(csdown.rely(csdown.aes))
         try {
             let host = MY_PARAMS.host;
@@ -1468,41 +1448,6 @@ const csdown = {
                         }, host, data.id),
                         col_type: 'movie_2'
                     })
-                } else if (wz == 'mogu') {
-                    if (data.image) {
-                        var img = data.image;
-                        d.push({
-                            title: data.title,
-                            desc: (data.created_date == null ? '' : data.created_date) + '  ' + (data.date == null ? '' : data.date) + '  ' + (data.duration == null ? '' : data.duration),
-                            img: (img.includes('upload') || img.includes('new.')) ? (data.image + lazy) : data.image,
-                            url: $('').lazyRule((host, id) => {
-                                var url = host + '?id=' + id;
-                                try {
-                                    var url0 = JSON.parse(fetch(url)).video;
-                                    if (!url0.includes('plist.m3u8')) {
-                                        let url1 = url0.split('.m3u8')[0].replace('.plist', '.plist.m3u8')
-                                        return url1;
-                                    } else {
-                                        return url0 + `#isVideo=true#`;
-                                    }
-                                } catch (e) {
-                                    log(e.toString())
-                                }
-                            }, host, data.id),
-                            col_type: 'movie_2'
-                        })
-                    }
-                } else if (wz == 'junma') {
-                    if (data.image) {
-                        var img = data.image;
-                        d.push({
-                            title: data.title,
-                            desc: (data.created_date == null ? '' : data.created_date) + '  ' + (data.date == null ? '' : data.date) + '  ' + (data.duration == null ? '' : data.duration),
-                            img: data.image + junmaimage,
-                            url: host + '?id=' + data.id + vod,
-                            col_type: 'movie_2'
-                        })
-                    }
                 } else {
                     if (data.image) {
                         var img = data.image;
@@ -1535,7 +1480,7 @@ const csdown = {
             Cate(猫咪FM, '猫咪FM', d);
         }
         var sign = Encrypt('{"page":' + pg + ',"cate_id":' + getMyVar('猫咪FM', '8') + ',"status":0,"type":0,"new":0}');
-        var host = 'http://43.154.96.251:8089/api/book/index?params=' + sign;
+        var host = 'http://119.28.52.193:8089/api/book/index?params=' + sign;
         var body = 'params=' + sign;
         var html = fetch(host, {
             headers: {
@@ -2019,7 +1964,7 @@ const csdown = {
                     desc: data.number,
                     img: data.image,
                     url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").nvyouerji1()',
-                    col_type: 'card_pic_3_center',
+                    col_type: 'card_pic_3',
                     extra: {
                         host: `${host}?sort=${data.id}&page=`,
                         wz: wz,
@@ -2143,7 +2088,7 @@ const csdown = {
                         title: data.title,
                         img: data.image,
                         url: 'hiker://empty?@rule=js:$.require("csdown").zhiboerji1()',
-                        col_type: 'card_pic_3_center',
+                        col_type: 'card_pic_3',
                         extra: {
                             host: `${host}?pingtai=${data.id}`,
                             wz: wz,
@@ -2179,30 +2124,6 @@ const csdown = {
             toast('看不了')
         }
         setResult(d)
-    },
-    𝐜𝐨𝐝𝐞_: getItem('𝐜𝐨𝐝𝐞_', ''),
-    𝐜𝐨𝐝𝐞_1: () => {
-        var d = csdown.d;
-        d.push({   
-            title: "确认",
-            url: $.toString(() => {
-                putMyVar('mima_', input)
-                let code = base64Decode(hexToBase64('6f306f6f306f6f6f306f6f6f6f'))
-                if (input == code) {
-                    setItem('𝐜𝐨𝐝𝐞_', '1')
-                    toast('密码正确')
-                    refreshPage(false)
-                } else {
-                    toast('密码错误')
-                }
-                return 'hiker://empty'
-            }),
-               desc: "请输入密码",
-               col_type: "input",
-            extra: {
-                defaultValue: getMyVar('mima_', ''),
-            }
-        })
     },
     xiaoshuoerji: () => {
         var d = csdown.d;
@@ -2341,13 +2262,11 @@ const csdown = {
                     title: data.title,
                     desc: data.date,
                     img: data.image,
-                    url: 'hiker://empty?#immersiveTheme#@rule=js:$.require("csdown").manhuaerji1()',
+                    url: 'hiker://empty@rule=js:$.require("csdown").manhuaerji1()',
                     col_type: 'movie_3',
                     extra: {
                         host: `${host}?id=${data.id}`,
                         wz: wz,
-                        image: data.image,
-                        title: data.title,
                     }
                 })
             })
@@ -2363,27 +2282,10 @@ const csdown = {
         let host = MY_PARAMS.host;
         let url = host.split('?')[0];
         var wz = MY_PARAMS.wz;
-        let img = MY_PARAMS.image;
-        let title = MY_PARAMS.title;
         try {
-            let list = JSON.parse(fetch(host));
-            var chapters = list.chapters;
+            let list = JSON.parse(fetch(host)).chapters;
             //log(list)
-            d.push({
-                title: title,
-                url: img,
-                img: img,
-                col_type: 'movie_1_vertical_pic_blur',
-            })
-            d.push({
-                title: (getVar('shsort') == '1') ? '““””<b><span style="color: #FF0000">当前排序：逆序</span></b>' : '““””<b><span style="color: #1aad19">当前排序：正序</span></b>',
-                url: `#noLoading#@lazyRule=.js:let conf = getVar('shsort');if(conf=='1'){putVar({key:'shsort', value:'0'});}else{putVar({key:'shsort', value:'1'})};refreshPage(false);'toast://切换排序成功'`,
-                col_type: 'text_center_1',
-            })
-            if (getVar('shsort') == '1') {
-                chapters = chapters.reverse();
-            }
-            chapters.forEach(data => {
+            list.forEach(data => {
                 d.push({
                     title: data.title,
                     url: url + '?id=' + data.id + pics,
@@ -2394,10 +2296,10 @@ const csdown = {
             d.push({
                 title: ('““””预览漫画' + (preview == "0" ? "[关]".fontcolor("red") : "[开]".fontcolor("green"))).small(),
                 col_type: 'text_center_1',
-                url: $('#noLoading#').lazyRule(() => {
+                url: $('').lazyRule(() => {
                     var i = getItem('preview', "0");
                     setItem('preview', i == "0" ? "1" : "0");
-                    refreshPage(false);
+                    refreshPage();
                     return 'hiker://empty'
                 }),
                 extra: {
@@ -2765,15 +2667,15 @@ const csdown = {
         eval(csdown.rely(csdown.aes));
         var pg = getParam('page');
         var 猫咪 = [{
-            title: '猫咪原创&不雅视频&亚洲无 码&抖音妹集合&热剧成人版&韩国三级&人气女 优&国产专区&中文字幕&欧美精品&成人动漫&精品推荐',
-            id: '10&5&9&11&12&13&6&3&8&7&1&15'
+            title: '猫咪原创&AI制作&不雅视频&亚洲无 码&抖音妹集合&热剧成人版&韩国三级&人气女 优',
+            id: '10&16&5&9&11&12&13&6'
         }];
         if (MY_PAGE == 1) {
             Cate(猫咪, '猫咪', d);
         }
         var sign = Encrypt('{"special_id":' + getMyVar('猫咪', '10') + ',"page":' + pg + '}');
         try {
-            var host = 'http://43.154.96.251:8089/api/special/video?params=' + sign;
+            var host = 'http://119.28.52.193:8089/api/special/video?params=' + sign;
             var body = 'params=' + sign;
             var html = fetch(host, {
                 headers: {
@@ -2809,7 +2711,7 @@ const csdown = {
         }
         var sign = Encrypt('{"user_id":1790368,"type":' + getMyVar('猫咪原创', '3') + ',"page":' + pg + '}');
         try {
-            var host = 'http://43.154.96.251:8089/api/original/index?params=' + sign;
+            var host = 'http://119.28.52.193:8089/api/original/index?params=' + sign;
             var body = 'params=' + sign;
             var html = fetch(host, {
                 headers: {
@@ -2853,7 +2755,7 @@ const csdown = {
                 Cate(猫咪漫画, '猫咪漫画', d);
             }
             var sign = Encrypt('{"page":' + pg + '}');
-            var host = 'http://43.154.96.251:8089/api/comic/' + getMyVar('猫咪漫画', 'recommend') + '?params=' + sign;
+            var host = 'http://119.28.52.193:8089/api/comic/' + getMyVar('猫咪漫画', 'recommend') + '?params=' + sign;
             var body = 'params=' + sign;
             var html = fetch(host, {
                 headers: {
@@ -2890,7 +2792,7 @@ const csdown = {
         var id = MY_PARAMS.id;
         try {
             var sign = Encrypt('{"id":' + id + ',"page":' + pg + ',"sort":0}');
-            var host = 'http://43.154.96.251:8089/api/comic/lists?params=' + sign;
+            var host = 'http://119.28.52.193:8089/api/comic/lists?params=' + sign;
             var body = 'params=' + sign;
             var html = fetch(host, {
                 headers: {
@@ -2924,7 +2826,7 @@ const csdown = {
                 Cate(猫咪美图, '猫咪美图', d);
             }
             var sign = Encrypt('{"page":' + pg + ',"cate":' + getMyVar('猫咪美图', '0') + ',"type":1}');
-            var host = 'http://43.154.96.251:8089/api/v2/post/home?params=' + sign;
+            var host = 'http://119.28.52.193:8089/api/v2/post/home?params=' + sign;
             var body = 'params=' + sign;
             var html = fetch(host, {
                 headers: {
@@ -3091,7 +2993,7 @@ const csdown = {
                         desc: data.Number,
                         img: data.xinimg,
                         url: 'hiker://empty@rule=js:$.require("csdown").zhibojuheerji1()',
-                        col_type: 'card_pic_3_center',
+                        col_type: 'card_pic_3',
                         extra: {
                             host: `${host}${data.address}`,
                             wz: wz,
