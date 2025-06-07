@@ -59,7 +59,7 @@ const csdown = {
                                     title: '更新数据',
                                     js: $.toString(() => {
                                         eval($.require('csdown').rely($.require('csdown').aes));
-                                    var fabu, gonggao, nbym,sou;
+                                    var fabu, gonggao, nbym;
 
 try {
     fabu = qzDecrypt(request('http://01.xka3a.top/encrypt/api.php?path=yuming/yuming')).match(/总域名(.*?)《/)[1];
@@ -76,16 +76,16 @@ try {
 }
 
 try {
-    sou = gonggao.match(/搜索模块配置(.*?)《/)[1];
+    if (gonggao) {
+        nbym = gonggao.match(/内部域名(.*?)《/)[1];
+    }
 } catch (e) {
-    log('sou 获取失败，使用备用地址');
-    sou = 'http://c001.22s.lol/searchconfig/vipapi/vipconfig.txt';
+    log('nbym 获取失败');
 }
-
-let search = fetch(sou);
                                         let shouye = qzDecrypt(request((nbym || 'http://c001.22s.lol') + '/encrypt/api.php?path=qiezi/shouye'));
                                         
                                         let data   = qzDecrypt(request((nbym || 'http://c001.22s.lol') + '/encrypt/api.php?path=qiezi/zonghe'));
+                                        let search = fetch((nbym || fabu || 'http://c001.22s.lol') + '/searchconfig/vipapi/vipconfig.txt');
                                         // var kuozhan=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/heikeji'));
                                         // var yuming=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/yuming'));                                  
                                         let avbk = fetch('https://app.caoppht.com/avbk132.php');
@@ -169,7 +169,7 @@ var option = url.map((_, i) => `线路${i + 1}`);
             //log(getItem('gonggao'))
             //log(getItem('avbk'))
             var list = getItem('shouye').split('首页数据开始')[1].split('首页数据结束')[0].replace(/https?\:\/\/(api1?\.)?(changfapiaopiao|yilushunfeng|phpjiekou|apijiekou)\.top(\/api)?/g, getItem('host')).split('换行');
-               var imgurl = (/^https?:\/\//.test(getItem('nbym')) && getItem('nbym')) || (/^https?:\/\//.test(fabu) && fabu) || 'http://c001.22s.lol';
+               var imgurl = (/^https?:\/\//.test(getItem('nbym')) && getItem('nbym'))  || 'http://c001.22s.lol';
             list.forEach(data => {
                 var qd = sp(data, "qd(", ")");
                 var tp = sp(data, "tp(", ")");
@@ -403,7 +403,7 @@ var option = url.map((_, i) => `线路${i + 1}`);
         } catch (e) {
             log(e.message)
             if (getMyVar('a') == '') {
-            	var fabu, gonggao, nbym,sou;
+            	var fabu, gonggao, nbym;
 
 try {
     fabu = qzDecrypt(request('http://01.xka3a.top/encrypt/api.php?path=yuming/yuming')).match(/总域名(.*?)《/)[1];
@@ -420,17 +420,17 @@ try {
 }
 
 try {
-    sou = gonggao.match(/搜索模块配置(.*?)《/)[1];
+    if (gonggao) {
+        nbym = gonggao.match(/内部域名(.*?)《/)[1];
+    }
 } catch (e) {
-    log('sou 获取失败，使用备用地址');
-    sou = 'http://c001.22s.lol/searchconfig/vipapi/vipconfig.txt';
+    log('gonggao 获取失败');
 }
-
-let search = fetch(sou);    
                 const host = 'http://randomapi06.changfapiaopiao.top';
                 let shouye = qzDecrypt(request((nbym || 'http://c001.22s.lol') + '/encrypt/api.php?path=qiezi/shouye'));
                                         
                                         let data   = qzDecrypt(request((nbym || 'http://c001.22s.lol') + '/encrypt/api.php?path=qiezi/zonghe'));
+                                        let search = fetch((nbym || fabu || 'http://c001.22s.lol') + '/searchconfig/vipapi/vipconfig.txt');
                 // var kuozhan=qzDecrypt(request('http://007.22s.lol/encrypt/api.php?path=qiezi/heikeji'))
                 // var yuming=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/yuming'))
                 const avbk = fetch('https://app.caoppht.com/avbk132.php');
@@ -462,7 +462,7 @@ let search = fetch(sou);
             const d = csdown.d;
             // var list=getItem('data').split('综合数据开始')[1].split('综合数据结束')[0].split('换行');
             var list = getItem('data').split('综合数据开始')[1].split('AV百科')[0].replace(/https?\:\/\/(api1?\.)?(changfapiaopiao|yilushunfeng|phpjiekou|apijiekou)\.top(\/api)?/g, getItem('host')).replace(/分割线/g, '换行').split('换行');
-            var imgurl=getItem('nbym');
+            var imgurl = (/^https?:\/\//.test(getItem('nbym')) && getItem('nbym'))  || 'http://c001.22s.lol';
             list.forEach(data => {
                 var qd = sp(data, "qd(", ")");
                 var tp = sp(data, "tp(", ")");
