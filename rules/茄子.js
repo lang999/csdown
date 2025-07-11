@@ -7,6 +7,9 @@ const csdown = {
     },
     home: () => {
         var d = csdown.d;
+        if (!csdown.𝐜𝐨𝐝𝐞_) {
+            csdown.𝐜𝐨𝐝𝐞_1();
+        } else {
             if (getItem('up' + csdown.version, '') == '') {
                 confirm({
                     title: '更新内容',
@@ -29,7 +32,8 @@ const csdown = {
                     extra: {
                         defaultValue: getMyVar('keyword', ''),
                     }
-                });
+                })
+            };
             var list = [{
                 title: '首页&综合',
                 id: '1&2&3&4&5',
@@ -66,6 +70,9 @@ function getFabu() {
         'http://01.xka3a.top',
         'http://api.xka1.top',
         'http://y001.22s.mom'
+        'http://c001.22s.mom'
+        'http://y001.22s.lol'
+    
     ];
     const path = '/encrypt/api.php?path=yuming/yuming';
     for (let base of basePaths) {
@@ -135,7 +142,7 @@ let search = fetch(dizhi + '/searchconfig/vipapi/vipconfig.txt');
                                     js: $.toString(() => {
                                         var raw = getItem('gonggao');
 var url = (raw && raw.match(/线路集合(.*?)《/)) ? raw.match(/线路集合(.*?)《/)[1].trim().split('|') :
-          'http://randomapi06.changfapiaopiao.top|http://api002.feylen6.top|http://randomapi08.changfapiaopiao.top|http://api018.apijiekou.top/api|http://sapi001.22s.lol/api|http://api1.feylen6.top|http://api.changfapiaopiao.top|http://api1.apijiekou.top/api|http://api1.feylen6.top|http://api.changfapiaopiao.top|http://api1.apijiekou.top/api'.split('|');
+          'http://randomapi06.changfapiaopiao.top|http://api002.feylen6.top|http://randomapi08.changfapiaopiao.top|http://api6688.fltv.top/api|http://sapi001d.22s.lol/api'.split('|');
 
 var option = url.map((_, i) => `线路${i + 1}`);
                                         var Line = {
@@ -447,15 +454,15 @@ try {
     }
 } catch (e) {
     log('nbym 获取失败，使用默认地址');
-    nbym = 'http://c001.22s.lol';
+    nbym = 'http://y001.22s.mom';
 }
-var dizhi = nbym || fabu || 'http://c001.22s.lol';
+var dizhi = nbym || fabu || 'http://y001.22s.mom';
                 const host = 'http://randomapi06.changfapiaopiao.top';
                 let shouye = qzDecrypt(request(dizhi + '/encrypt/api.php?path=qiezi/shouye'));
                                         
                                         let data   = qzDecrypt(request(dizhi + '/encrypt/api.php?path=qiezi/zonghe'));
                                         let search = fetch(dizhi + '/searchconfig/vipapi/vipconfig.txt');
-                // var kuozhan=qzDecrypt(request('http://007.22s.lol/encrypt/api.php?path=qiezi/heikeji'))
+                // var kuozhan=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/heikeji'))
                 // var yuming=qzDecrypt(request('http://y001.22s.mom/encrypt/api.php?path=qiezi/yuming'))
                 const avbk = fetch('https://app.caoppht.com/avbk132.php');
                 putMyVar('a', '1');
@@ -2252,6 +2259,30 @@ var dizhi = nbym || fabu || 'http://c001.22s.lol';
             toast('看不了')
         }
         setResult(d)
+    },
+    𝐜𝐨𝐝𝐞_: getItem('𝐜𝐨𝐝𝐞_', ''),
+    𝐜𝐨𝐝𝐞_1: () => {
+        var d = csdown.d;
+        d.push({   
+            title: "确认",
+            url: $.toString(() => {
+                putMyVar('mima_', input)
+                let code = base64Decode(hexToBase64('7169657a69706f6a6965303031'))
+                if (input == code) {
+                    setItem('𝐜𝐨𝐝𝐞_', '1')
+                    toast('密码正确')
+                    refreshPage(false)
+                } else {
+                    toast('密码错误')
+                }
+                return 'hiker://empty'
+            }),
+               desc: "请输入密码",
+               col_type: "input",
+            extra: {
+                defaultValue: getMyVar('mima_', ''),
+            }
+        })
     },
     xiaoshuoerji: () => {
         var d = csdown.d;
