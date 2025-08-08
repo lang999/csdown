@@ -229,7 +229,7 @@ const tudou = {
         } catch (e) {
             log(e.message)
             if (getMyVar('a') == '') {
-                //let host = 'https://apip.skolx.cn';
+                //let host = 'https://apip.crootpass.cn';
                 let html = fetch('https://ilitqxipof4.icu/h5')
                 let host_ = pdfa(html, 'body&&script').map(c => pdfh(c, 'script&&src'))[0].split('.')[1];
                 let host = `https://apip.${host_}.cn`
