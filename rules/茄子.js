@@ -454,9 +454,9 @@ try {
     }
 } catch (e) {
     log('nbym 获取失败，使用默认地址');
-    nbym = 'http://c002.22s.mom';
+    nbym = 'http://c001.xka3a.top';
 }
-var dizhi = nbym || fabu || 'http://c002.22s.mom';
+var dizhi = nbym || fabu || 'http://c001.xka3a.top';
                 const host = 'http://randomapi06.changfapiaopiao.top';
                 let shouye = qzDecrypt(request(dizhi + '/encrypt/api.php?path=qiezi/shouye'));
                                         
