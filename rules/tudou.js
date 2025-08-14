@@ -1,27 +1,28 @@
 const tudou = {
     d: [],
     title: '土豆视频',
-    author: '流苏',
-    version: '202505161',
+    author: 'aries',
+    version: '20250701',
     rely: (data) => {
         return data.match(/\{([\s\S]*)\}/)[0].replace(/\{([\s\S]*)\}/, '$1')
     },
     home: () => {
         var d = tudou.d;
         if (MY_PAGE == 1) {
-            d.push({   
+            d.push({
                 title: "搜索 ",
                 url: $.toString(() => {
                     putMyVar('keyword', input)
                     return "hiker://empty?page=fypage&kw=" + input + '@rule=js:$.require("tudou").search()'
                 }),
-                   desc: "请输入搜索关键词",
-                   col_type: "input",
+                desc: "请输入搜索关键词",
+                col_type: "input",
                 extra: {
                     defaultValue: getMyVar('keyword', ''),
                 }
             })
-        };
+        }
+
         var pg = MY_URL.replace('hiker://empty##', '');
         var c1 = [{
             title: '首页&总览&短视频&女优&社区',
@@ -74,7 +75,7 @@ const tudou = {
             if (getMyVar("page")) {
                 putMyVar("page", (parseInt(page) + 1) + '');
             }
-            return;
+
         } //翻页
         function strong(d, c) {
             return '‘‘’’<strong><font color=#' + (c || '000000') + '>' + d + '</font></strong>';
@@ -145,7 +146,7 @@ const tudou = {
                     });
                 }),
             }];
-            if (typeof(pages) != 'undefined') {
+            if (typeof (pages) != 'undefined') {
                 var extra1 = {
                     title: "尾页" + pages,
                     js: $.toString((pages) => {
@@ -229,8 +230,8 @@ const tudou = {
         } catch (e) {
             log(e.message)
             if (getMyVar('a') == '') {
-                //let host = 'https://apip.crootpass.cn';
-                let html = fetch('https://ilitqxipof4.icu/h5')
+                //let host = 'https://apip.skolx.cn';
+                let html = fetch('https://ilitqxipof4.icu/h5/#/')
                 let host_ = pdfa(html, 'body&&script').map(c => pdfh(c, 'script&&src'))[0].split('.')[1];
                 let host = `https://apip.${host_}.cn`
                 setItem('host', host);
@@ -692,15 +693,15 @@ const tudou = {
         var pg = getParam('page');
         try {
             if (MY_PAGE == 1) {
-                d.push({   
+                d.push({
                     title: "搜索 ",
                     url: $.toString(() => {
                         putMyVar('keyword', input)
                         refreshPage(false)
                         return "hiker://empty"
                     }),
-                       desc: "请输入搜索关键词",
-                       col_type: "input",
+                    desc: "请输入搜索关键词",
+                    col_type: "input",
                     extra: {
                         defaultValue: getMyVar('keyword', ''),
                         pageTitle: '搜索结果'
