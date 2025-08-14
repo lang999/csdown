@@ -1,7 +1,7 @@
 const tudou = {
     d: [],
     title: '土豆视频',
-    author: 'aries',
+    author: '流苏',
     version: '20250701',
     rely: (data) => {
         return data.match(/\{([\s\S]*)\}/)[0].replace(/\{([\s\S]*)\}/, '$1')
