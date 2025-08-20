@@ -69,10 +69,10 @@ function getFabu() {
     const basePaths = [
         'http://01.xka3a.top',
         'http://api.xka1.top',
-        'http://c002.22s.mom',
+        'http://s001.xka3b.top',
         'http://c001.xka3b.top',
-        'http://y001.xka3b.top'
-    
+        'http://y001.xka3b.top',
+        'http://y002.xka3b.top'
     ];
     const path = '/encrypt/api.php?path=yuming/yuming';
     for (let base of basePaths) {
@@ -110,7 +110,7 @@ try {
     log('gonggao 解析失败');
 }
 
-var dizhi = nbym || fabu || 'http://api.xka1.top';
+var dizhi = nbym || fabu || 'http://01.xka3a.top';
 
 let shouye = qzDecrypt(request(dizhi + '/encrypt/api.php?path=qiezi/shouye'));
 let data = qzDecrypt(request(dizhi + '/encrypt/api.php?path=qiezi/zonghe'));
@@ -142,7 +142,7 @@ let search = fetch(dizhi + '/searchconfig/vipapi/vipconfig.txt');
                                     js: $.toString(() => {
                                         var raw = getItem('gonggao');
 var url = (raw && raw.match(/线路集合(.*?)《/)) ? raw.match(/线路集合(.*?)《/)[1].trim().split('|') :
-          'http://randomapi06.changfapiaopiao.top|http://api002.feylen6.top|http://randomapi08.changfapiaopiao.top|http://api6688.fltv.top/api|http://sapi001d.22s.lol/api6'.split('|');
+          'http://randomapi06.changfapiaopiao.top|http://randomstr.changfapiaopiao.top|http://randomapi08.changfapiaopiao.top|http://api6688.fltv.top/api|http://s001.xka3b.top/api6'.split('|');
 
 var option = url.map((_, i) => `线路${i + 1}`);
                                         var Line = {
