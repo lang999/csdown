@@ -311,9 +311,7 @@ var option = url.map((_, i) => `线路${i + 1}`);
                         host: `${getItem('host')}/video1/caoliusp_xilie/uushipin.php`,
                         wz: 'uushipin',
                     }
-                }, 
-                */
-                {
+                }, {
                     title: '图宅',
                     img: imgurl+'/6img/tuzac.png',
                     url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").picerji()',
