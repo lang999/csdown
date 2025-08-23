@@ -379,7 +379,6 @@ var option = url.map((_, i) => `线路${i + 1}`);
                             wz: 'xiaohuli',
                         }
                 }
-                */
             )
 
             var list1 = getItem('shouye').split('分割线')[1].replace(/https?\:\/\/(api1?\.)?(changfapiaopiao|yilushunfeng|phpjiekou|apijiekou)\.top(\/api)?/g, getItem('host')).split('换行');
