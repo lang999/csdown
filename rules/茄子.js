@@ -21,14 +21,14 @@ const csdown = {
                 })
             }
             if (MY_PAGE == 1) {
-                d.push({   
+                d.push({   
                     title: "搜索 ",
                     url: $.toString(() => {
                         putMyVar('keyword', input)
                         return "hiker://empty?page=fypage&kw=" + input + '@rule=js:$.require("csdown").search()'
                     }),
-                       desc: "请输入搜索关键词",
-                       col_type: "input",
+                       desc: "请输入搜索关键词",
+                       col_type: "input",
                     extra: {
                         defaultValue: getMyVar('keyword', ''),
                     }
@@ -302,7 +302,9 @@ var option = url.map((_, i) => `线路${i + 1}`);
                         host: `${getItem('host')}/video2/uaa/uaa.php`,
                         wz: 'uaa',
                     }
-                }, {
+                },
+                /*
+                {
                     title: 'UU视频',
                     img: imgurl+'/6img/uusp.png',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
@@ -311,7 +313,9 @@ var option = url.map((_, i) => `线路${i + 1}`);
                         host: `${getItem('host')}/video1/caoliusp_xilie/uushipin.php`,
                         wz: 'uushipin',
                     }
-                }, {
+                }, 
+                */
+                {
                     title: '图宅',
                     img: imgurl+'/6img/tuzac.png',
                     url: 'hiker://empty?page=fypage@rule=js:$.require("csdown").picerji()',
@@ -369,7 +373,9 @@ var option = url.map((_, i) => `线路${i + 1}`);
                         host: `${getItem('host')}/video2/botiantang/btt.php`,
                         wz: 'btt',
                     }
-                }, {
+                },
+                /*
+                    {
                         title: '小狐狸',
                         img: imgurl+'/6img/xiaohuli1.png',
                         url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
@@ -379,6 +385,7 @@ var option = url.map((_, i) => `线路${i + 1}`);
                             wz: 'xiaohuli',
                         }
                 }
+                */
             )
 
             var list1 = getItem('shouye').split('分割线')[1].replace(/https?\:\/\/(api1?\.)?(changfapiaopiao|yilushunfeng|phpjiekou|apijiekou)\.top(\/api)?/g, getItem('host')).split('换行');
@@ -672,15 +679,15 @@ var dizhi = nbym || fabu || 'http://01.xka3a.top';
         var pg = getParam('page');
         try {
             if (MY_PAGE == 1) {
-                d.push({   
+                d.push({   
                     title: "搜索 ",
                     url: $.toString(() => {
                         putMyVar('keyword', input)
                         refreshPage(false)
                         return "hiker://empty"
                     }),
-                       desc: "请输入搜索关键词",
-                       col_type: "input",
+                       desc: "请输入搜索关键词",
+                       col_type: "input",
                     extra: {
                         defaultValue: getMyVar('keyword', ''),
                         pageTitle: '搜索结果'
@@ -2256,7 +2263,7 @@ var dizhi = nbym || fabu || 'http://01.xka3a.top';
     𝐜𝐨𝐝𝐞_: getItem('𝐜𝐨𝐝𝐞_', ''),
     𝐜𝐨𝐝𝐞_1: () => {
         var d = csdown.d;
-        d.push({   
+        d.push({   
             title: "确认",
             url: $.toString(() => {
                 putMyVar('mima_', input)
@@ -2270,8 +2277,8 @@ var dizhi = nbym || fabu || 'http://01.xka3a.top';
                 }
                 return 'hiker://empty'
             }),
-               desc: "请输入密码",
-               col_type: "input",
+               desc: "请输入密码",
+               col_type: "input",
             extra: {
                 defaultValue: getMyVar('mima_', ''),
             }
@@ -2719,14 +2726,14 @@ var dizhi = nbym || fabu || 'http://01.xka3a.top';
         var d = csdown.d;
         eval(csdown.rely(csdown.aes));
         if (MY_PAGE == 1) {
-            d.push({   
+            d.push({   
                 title: "搜索 ",
                 url: $.toString(() => {
                     putMyVar('keyword', input)
                     return "hiker://empty?page=fypage&kw=" + input + '@rule=js:$.require("csdown").avbkss()'
                 }),
-                   desc: "请输入搜索关键词",
-                   col_type: "input",
+                   desc: "请输入搜索关键词",
+                   col_type: "input",
                 extra: {
                     defaultValue: getMyVar('keyword', ''),
                 }
@@ -2776,15 +2783,15 @@ var dizhi = nbym || fabu || 'http://01.xka3a.top';
         eval(csdown.rely(csdown.aes));
         var pg = getParam('page');
         if (MY_PAGE == 1) {
-            d.push({   
+            d.push({   
                 title: "搜索 ",
                 url: $.toString(() => {
                     putMyVar('keyword', input)
                     refreshPage(false)
                     return "hiker://empty"
                 }),
-                   desc: "请输入搜索关键词",
-                   col_type: "input",
+                   desc: "请输入搜索关键词",
+                   col_type: "input",
                 extra: {
                     defaultValue: getMyVar('keyword', ''),
                     pageTitle: '搜索结果'
