@@ -302,9 +302,7 @@ var option = url.map((_, i) => `线路${i + 1}`);
                         host: `${getItem('host')}/video2/uaa/uaa.php`,
                         wz: 'uaa',
                     }
-                },
-                /*
-                {
+                }, {
                     title: 'UU视频',
                     img: imgurl+'/6img/uusp.png',
                     url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
@@ -373,9 +371,7 @@ var option = url.map((_, i) => `线路${i + 1}`);
                         host: `${getItem('host')}/video2/botiantang/btt.php`,
                         wz: 'btt',
                     }
-                },
-                /*
-                    {
+                }, {
                         title: '小狐狸',
                         img: imgurl+'/6img/xiaohuli1.png',
                         url: 'hiker://empty?page=fypage&#noHistory#@rule=js:$.require("csdown").syvideo()',
@@ -456,7 +452,7 @@ try {
     log('nbym 获取失败，使用默认地址');
     nbym = 'http://c001.xka3a.top';
 }
-var dizhi = nbym || fabu || 'http://c001.xka3a.top';
+var dizhi = nbym || fabu || 'http://01.xka3a.top';
                 const host = 'http://randomapi06.changfapiaopiao.top';
                 let shouye = qzDecrypt(request(dizhi + '/encrypt/api.php?path=qiezi/shouye'));
                                         
