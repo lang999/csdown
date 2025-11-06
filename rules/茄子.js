@@ -1,7 +1,7 @@
 const csdown = {
     d: [],
     author: '流苏',
-    version: '20250825',
+    version: '20251125',
     rely: (data) => {
         return data.match(/\{([\s\S]*)\}/)[0].replace(/\{([\s\S]*)\}/, '$1')
     },
@@ -142,7 +142,7 @@ let search = fetch(dizhi + '/searchconfig/vipapi/vipconfig.txt');
                                     js: $.toString(() => {
                                         var raw = getItem('gonggao');
 var url = (raw && raw.match(/线路集合(.*?)《/)) ? raw.match(/线路集合(.*?)《/)[1].trim().split('|') :
-          'http://randomapi06.changfapiaopiao.top|http://randomstr.changfapiaopiao.top|http://randomapi08.changfapiaopiao.top|http://api6688.fltv.top/api|http://s001.xka3b.top/api6'.split('|');
+          'http://randomapi06.sexladyya.top|http://randomstr.sexladyya.top|http://randomapi08.sexladyya.top|http://api6688.fltv.top/api|http://s001.xka3b.top/api6'.split('|');
 
 var option = url.map((_, i) => `线路${i + 1}`);
                                         var Line = {
